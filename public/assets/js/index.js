@@ -33,6 +33,15 @@ const getNotes = () =>
     },
   });
 
+const getNote = (id) =>
+  fetch(`/api/notes/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -126,13 +135,14 @@ const renderNoteList = async (notes) => {
   let noteListItems = [];
 
   // Returns HTML element with or without a delete button
-  const createLi = (text, delBtn = true) => {
+  const createLi = (text, id, delBtn = true) => {
     const liEl = document.createElement('li');
     liEl.classList.add('list-group-item');
 
     const spanEl = document.createElement('span');
     spanEl.classList.add('list-item-title');
     spanEl.innerText = text;
+    spanEl.setAttribute("id", id);
     spanEl.addEventListener('click', handleNoteView);
 
     liEl.append(spanEl);
@@ -159,7 +169,7 @@ const renderNoteList = async (notes) => {
   }
 
   jsonNotes.forEach((note) => {
-    const li = createLi(note.title);
+    const li = createLi(note.title, note.note_id);
     li.dataset.note = JSON.stringify(note);
 
     noteListItems.push(li);
