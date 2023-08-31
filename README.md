@@ -25,6 +25,8 @@ Creating a note and viewing the note:
 
 ![Created Note](images/created-note.png)
 
+Deployed app on Heroku: [Note Taker App](https://note-taker-mk-dac6e84d9547.herokuapp.com/) 
+
 ---
 
 ## Tests
