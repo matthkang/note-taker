@@ -46,7 +46,7 @@ notes.post('/', (req, res) => {
 });
 
 notes.delete('/:id', (req, res) => {
-    console.log("delete api");
+    console.info(`${req.method} request received to delete a note`);
     const requestedId = req.params.id;
 
     // Iterate through the id name to check if it matches `req.params.id`
